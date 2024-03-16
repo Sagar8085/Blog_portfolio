@@ -4,7 +4,7 @@ const port = 3000;
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const adminRoutes= require("./routes/adminRoutes")
+const adminRoutes= require("./app/routes/adminRoutes")
 
 app.use("/admin", adminRoutes);
 
