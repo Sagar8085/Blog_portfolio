@@ -4,12 +4,12 @@ const port = 3000;
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const adminRoutes= require("./routes/adminRoutes")
+const adminRoutes = require("./routes/adminRoutes");
 
 app.use("/admin", adminRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hello Worlaskjdkajsdlkjd!");
 });
 
 app.listen(port, () => {
