@@ -13,7 +13,6 @@ exports.registration = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  console.log(">>>>><<<<>", req);
   try {
     const { email, password } = req.body;
   } catch (error) {
