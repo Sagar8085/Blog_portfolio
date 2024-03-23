@@ -9,7 +9,8 @@ app.use(cors());
 app.use("/admin", adminRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello Worlaskjdkajsdlkjd!");
+
+  res.send("Hello india");
 });
 
 app.listen(port, () => {
