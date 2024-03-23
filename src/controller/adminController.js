@@ -2,9 +2,9 @@ const Admin = require("../model/admin");
 const brypt = require("bcrypt");
 
 exports.registration = async (req, res) => {
+  console.log(">>>>>>", req.body);
   try {
     const { username, firstname, lastname, email, password } = req.body;
-    console.log(">>>>>>", req.body);
   } catch (error) {
     res
       .status(500)
