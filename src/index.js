@@ -10,9 +10,10 @@ app.use(express.json());
 app.use("/admin", adminRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Hello Worlaskjdkajsdlkjd!");
+
+  res.send("Hello india");
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at thiss http://localhost:${port}`);
 });
