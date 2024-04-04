@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const adminRoutes = require("./routes/adminRoutes");
 const userRoutes = require("./routes/userRoutes");
+const blogRoutes = require("./routes/blogRoutes");
+const projectsRoutes = require("./routes/projectsRoutes");
 require("dotenv").config();
 app.use(cors());
 app.use(express.json());
@@ -27,6 +29,9 @@ mongoose
   });
 app.use("/admin", adminRoutes);
 app.use("/", userRoutes);
+app.use("/project", projectsRoutes);
+app.use("/blog", blogRoutes);
+
 
 app.get("/", (req, res) => {
   res.send("Hello india");

@@ -51,7 +51,6 @@ exports.login = async (req, res) => {
       });
     }
 
-  
     const passwordMatch = await bcrypt.compare(password, admin.password);
     if (!passwordMatch) {
       return res.status(401).json({
@@ -62,7 +61,7 @@ exports.login = async (req, res) => {
 
     // Generate a JWT token for authentication
     const token = jwt.sign({ userId: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h", 
+      expiresIn: "1h",
     });
 
     admin.password = undefined;
@@ -71,7 +70,6 @@ exports.login = async (req, res) => {
       success: true,
       message: "Authentication successful",
       token,
-      data: admin,
     });
   } catch (error) {
     res.status(500).json({
