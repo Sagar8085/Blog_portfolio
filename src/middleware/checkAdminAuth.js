@@ -43,7 +43,6 @@ const checkAuth = (req, res, next) => {
       return res.status(401).json({ error: "Unauthorized: Invalid token" });
     }
 
-    // The token is valid, and you can access the decoded user information if needed
     req.user = decoded;
     next(); // Proceed to the next middleware or route handler
   });

@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 exports.registration = async (req, res) => {
   try {
-    const { username, firstname, lastname, email, password } = req.body;
+    const { username, mobile, email, password } = req.body;
 
     const existingUser = await Admin.findOne({ email });
     if (existingUser) {
@@ -17,8 +17,7 @@ exports.registration = async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
       const admin = new Admin({
         username,
-        firstname,
-        lastname,
+        mobile,
         email,
         password: hashedPassword,
       });
