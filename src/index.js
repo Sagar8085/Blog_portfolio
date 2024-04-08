@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000;
+
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -17,10 +17,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // Connect to MongoDB
 mongoose
-  .connect(
-    `mongodb+srv://mohitshrivastava229:12345@portfolio.4mcawfk.mongodb.net/`,
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(`${process.env.mongodb}`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to MongoDB");
   })
@@ -32,11 +32,12 @@ app.use("/", userRoutes);
 app.use("/project", projectsRoutes);
 app.use("/blog", blogRoutes);
 
-
 app.get("/", (req, res) => {
   res.send("Hello india");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at thiss http://localhost:${port}`);
+app.listen(process.env.port, () => {
+  console.log(
+    `Example app listening at thiss http://localhost:${process.env.port}`
+  );
 });
