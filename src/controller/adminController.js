@@ -60,13 +60,14 @@ exports.login = async (req, res) => {
 
     // Generate a JWT token for authentication
     const token = jwt.sign({ userId: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "10h",
     });
 
     admin.password = undefined;
 
     res.status(200).json({
       success: true,
+      isAdmin:true,
       message: "Authentication successful",
       token,
     });
@@ -74,6 +75,7 @@ exports.login = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Authentication failed",
+
       error: error.message,
     });
   }
