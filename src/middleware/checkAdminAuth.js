@@ -14,8 +14,8 @@ const checkAuth = (req, res, next) => {
       message: "Unauthorized: No Bearer token provided",
     });
   }
-
   // Extract the token from the header
+  console.log("authHeader>>", authHeader.split(" "));
   const token = authHeader.split(" ")[1];
 
   // Verify the token using your secret key

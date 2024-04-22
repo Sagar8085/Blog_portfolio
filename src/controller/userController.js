@@ -1,6 +1,7 @@
 const User = require("../model/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
 
 exports.registration = async (req, res) => {
   try {
@@ -73,5 +74,36 @@ exports.login = async (req, res) => {
       message: "Authentication failed",
       error: error.message,
     });
+  }
+};
+
+exports.sendMain = async (req, res) => {
+  try {
+    const { useremail, mobile, subject, message } = req.body;
+    let transporter = nodemailer.createTransport({
+      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: "abc@gmail.com", // Your email address
+        pass: "password", // Your email password
+      },
+    });
+
+    // Define email options
+    let mailOptions = {
+      from: "", // Sender email address
+      to: "mohit.shrivastava229@gmail.com", // Recipient email address
+      subject: subject, // Email subject
+      text: message, // Email body text
+    };
+    await transporter.sendMail(mailOptions);
+
+    // Respond with a success message
+    res.status(200).json({ message: "Email sent successfully" });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Error sending email", error });
   }
 };
